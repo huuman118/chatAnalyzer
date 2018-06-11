@@ -47,22 +47,22 @@ const users = [
 const id = () => Math.round(Math.random() * (users.length - 1)) + 1
 
 const messages = [
-  {authorId: id(), content: 'I like React!', channelId: 1},
-  {authorId: id(), content: 'how do i import the module?', channelId: 1},
+  {userId: id(), message: 'I like React!', channelId: 1},
+  {userId: id(), message: 'how do i import the module?', channelId: 1},
   {
-    authorId: id(),
-    content: 'do an import React from React module',
+    userId: id(),
+    message: 'do an import React from React module',
     channelId: 1
   },
-  {authorId: id(), content: 'whats is a for loop?', channelId: 2},
-  {authorId: id(), content: 'You should learn JavaScript!', channelId: 2},
-  {authorId: id(), content: 'JavaScript is pretty great!', channelId: 2},
-  {authorId: id(), content: 'Redux is great!', channelId: 3},
-  {authorId: id(), content: 'I like having a store!', channelId: 3},
-  {authorId: id(), content: 'What is a thunk?', channelId: 3},
-  {authorId: id(), content: 'What does REST mean?', channelId: 4},
-  {authorId: id(), content: 'I like creating servers!', channelId: 4},
-  {authorId: id(), content: 'My server broke!', channelId: 4}
+  {userId: id(), message: 'whats is a for loop?', channelId: 2},
+  {userId: id(), message: 'You should learn JavaScript!', channelId: 2},
+  {userId: id(), message: 'JavaScript is pretty great!', channelId: 2},
+  {userId: id(), message: 'Redux is great!', channelId: 3},
+  {userId: id(), message: 'I like having a store!', channelId: 3},
+  {userId: id(), message: 'What is a thunk?', channelId: 3},
+  {userId: id(), message: 'What does REST mean?', channelId: 4},
+  {userId: id(), message: 'I like creating servers!', channelId: 4},
+  {userId: id(), message: 'My server broke!', channelId: 4}
 ]
 
 async function seed() {

@@ -5,7 +5,7 @@ const User = require('./user')
 module.exports = db.define(
   'message',
   {
-    content: {
+    message: {
       type: Sequelize.STRING,
       allowNull: false
     }
