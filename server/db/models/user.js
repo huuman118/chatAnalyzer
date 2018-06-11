@@ -2,7 +2,24 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
+const getRandomImage = () =>
+  `http://lorempixel.com/40/40/people/${Math.floor(Math.random() * 10)}`
+
 const User = db.define('user', {
+  name: {
+    type: Sequelize.STRING,
+    get() {
+      return this.getDataValue('name')
+        ? this.getDataValue('name')
+        : this.getDataValue('email')
+    }
+  },
+  image: {
+    type: Sequelize.STRING,
+    defaultValue: function() {
+      return getRandomImage()
+    }
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
