@@ -1,18 +1,19 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const User = require('./user')
 
-module.exports = db.define(
-  'message',
-  {
-    message: {
-      type: Sequelize.STRING,
-      allowNull: false
-    }
+module.exports = db.define('message', {
+  type: {
+    type: Sequelize.STRING
   },
-  {
-    defaultScope: {
-      include: [{model: User}]
-    }
+  ts: {
+    type: Sequelize.STRING
+  },
+  user: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  text: {
+    type: Sequelize.TEXT,
+    allowNull: false
   }
-)
+})
