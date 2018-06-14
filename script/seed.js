@@ -1,25 +1,8 @@
 'use strict'
-
 const db = require('../server/db')
-const {User, Message, Channel} = require('../server/db/models')
-
-/**
- * Welcome to the seed file! This seed file uses a newer language feature called...
- *
- *                  -=-= ASYNC...AWAIT -=-=
- *
- * Async-await is a joy to use! Read more about it in the MDN docs:
- *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
- *
- * Now that you've got the main idea, check it out in practice below!
- */
-const channels = [
-  {name: 'React_Intro'},
-  {name: 'Intro_to_JS'},
-  {name: 'Redux_Topics'},
-  {name: 'Express'}
-]
+const {User, Message} = require('../server/db/models')
+const {IncomingWebhook, WebClient} = require('@slack/client')
+if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 const users = [
   {
@@ -44,35 +27,32 @@ const users = [
   }
 ]
 
-const id = () => Math.round(Math.random() * (users.length - 1)) + 1
-
-const messages = [
-  {userId: id(), message: 'I like React!', channelId: 1},
-  {userId: id(), message: 'how do i import the module?', channelId: 1},
-  {
-    userId: id(),
-    message: 'do an import React from React module',
-    channelId: 1
-  },
-  {userId: id(), message: 'whats is a for loop?', channelId: 2},
-  {userId: id(), message: 'You should learn JavaScript!', channelId: 2},
-  {userId: id(), message: 'JavaScript is pretty great!', channelId: 2},
-  {userId: id(), message: 'Redux is great!', channelId: 3},
-  {userId: id(), message: 'I like having a store!', channelId: 3},
-  {userId: id(), message: 'What is a thunk?', channelId: 3},
-  {userId: id(), message: 'What does REST mean?', channelId: 4},
-  {userId: id(), message: 'I like creating servers!', channelId: 4},
-  {userId: id(), message: 'My server broke!', channelId: 4}
-]
+console.log('Getting started with Slack Developer Kit for Node.js')
+const web = new WebClient(process.env.SLACK_TOKEN)
+let messages = []
+const getSlackData = async () => {
+  await web.channels
+    .history({channel: 'CB79D89U5', count: 1000})
+    .then(resp => {
+      if (resp.messages.length > 0) {
+        console.log('data came back:', resp.messages)
+        messages = resp.messages.filter(message => !message.subtype)
+      } else {
+        console.log('No matches found')
+      }
+    })
+    .catch(console.error)
+}
+getSlackData()
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
   // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
   // executed until that promise resolves!
-  await Promise.all(users.map(user => User.create(user)))
-    .then(() => Promise.all(channels.map(channel => Channel.create(channel))))
-    .then(() => Promise.all(messages.map(message => Message.create(message))))
+  await Promise.all(users.map(user => User.create(user))).then(() =>
+    Promise.all(messages.map(message => Message.create(message)))
+  )
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
   console.log(`seeded successfully`)
