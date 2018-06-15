@@ -15,5 +15,18 @@ module.exports = db.define('message', {
   text: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  analyzed: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  score: {
+    type: Sequelize.STRING
+  },
+  tone_id: {
+    type: Sequelize.STRING
+  },
+  tone_name: {
+    type: Sequelize.STRING
   }
 })
