@@ -17,12 +17,12 @@ install:
 before_script:
   - psql -c 'create database "chatAnalyzer-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
-# before_deploy:
-#   - npm run build-client # make the bundle
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: huuman-chatanalyzer # see README
-#   api_key:
-#     secure: NLyEsCqPDqYyaft/szElx3dFkQZM5OZ/0JgqIS1RjvYpnjIbLFYkVQJzUozZSZjnDS3vovk/TOpAV9rLPRm6JHVk0SbBmE9oUPlu+maz4t6fMNylagCdidw8bQIminLvxrq+NJv/y+dWE+z7799EnISWRAxLUWJVReW+4SiWWFRau7Rvhc2bkB1cUCmYBMxA+5Y8epYqtP1BzhR9CqNf4EuQouTbqQJwv9BuceM9fBMoZuhZ5Obiq7M7BudRC0ueilpCzLFur6uzMd4Nm1CRpzv15pm1rr8webfDyC8Z/rSOTMhW0yWhIIhaBYEkeWYPtPYupAfuprmvnZmiuL2Xt7+EzuVlQGfXjP+lsdWAB0SMPzN19niY+LxH7owPCreYbY6We4RVJyw9nQpUKLerXQTdcvbqOiCb/cZhEtGmfI6Q2zySELLiKs2An0XTpqPfbc2DY0tLfkJ5boqFXDxlytL7d32+ZnyqCTUomgO7uGNquOkW0BR9GQkXIIvZ0GID0toWLdHSFrXzwWz+piZ0Yt/ID73V1geG4HMMbwG0LaRbtamMpXJX3PT4P28Hzgeji/sf1GkTVuuT6Ahj8cg03iQbxNryTTHVhRsZoukPgbm/UB+pyHRRJlg3729A/+SEllgh+5XF4YxtYx+OpvjOWAHep1C0tD6v1C3IlaE84qA= # see README
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: huuman-chatanalyzer # see README
+  api_key:
+    secure: NLyEsCqPDqYyaft/szElx3dFkQZM5OZ/0JgqIS1RjvYpnjIbLFYkVQJzUozZSZjnDS3vovk/TOpAV9rLPRm6JHVk0SbBmE9oUPlu+maz4t6fMNylagCdidw8bQIminLvxrq+NJv/y+dWE+z7799EnISWRAxLUWJVReW+4SiWWFRau7Rvhc2bkB1cUCmYBMxA+5Y8epYqtP1BzhR9CqNf4EuQouTbqQJwv9BuceM9fBMoZuhZ5Obiq7M7BudRC0ueilpCzLFur6uzMd4Nm1CRpzv15pm1rr8webfDyC8Z/rSOTMhW0yWhIIhaBYEkeWYPtPYupAfuprmvnZmiuL2Xt7+EzuVlQGfXjP+lsdWAB0SMPzN19niY+LxH7owPCreYbY6We4RVJyw9nQpUKLerXQTdcvbqOiCb/cZhEtGmfI6Q2zySELLiKs2An0XTpqPfbc2DY0tLfkJ5boqFXDxlytL7d32+ZnyqCTUomgO7uGNquOkW0BR9GQkXIIvZ0GID0toWLdHSFrXzwWz+piZ0Yt/ID73V1geG4HMMbwG0LaRbtamMpXJX3PT4P28Hzgeji/sf1GkTVuuT6Ahj8cg03iQbxNryTTHVhRsZoukPgbm/UB+pyHRRJlg3729A/+SEllgh+5XF4YxtYx+OpvjOWAHep1C0tD6v1C3IlaE84qA= # see README
