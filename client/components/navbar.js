@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import {updateMessage} from '../store'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -12,30 +12,20 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <AppBar>
     <Toolbar>
       <Typography variant="title" color="textSecondary">
-        Huu's Chat Analyzer
+        Chat Analyzer - #huuchatappchannel
       </Typography>
       <nav>
-        {isLoggedIn ? (
+        {
           <div>
             {/* The navbar will show these links after you log in */}
             <Button>
               <Link to="/home">Home</Link>
             </Button>
             <Button href="#" onClick={handleClick}>
-              Logout
+              Update Data
             </Button>
           </div>
-        ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <Button>
-              <Link to="/login">Login</Link>
-            </Button>
-            <Button>
-              <Link to="/signup">Sign Up</Link>
-            </Button>
-          </div>
-        )}
+        }
       </nav>
       <hr />
     </Toolbar>
@@ -47,14 +37,14 @@ const Navbar = ({handleClick, isLoggedIn}) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: true
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     handleClick() {
-      dispatch(logout())
+      dispatch(updateMessage())
     }
   }
 }
@@ -65,6 +55,6 @@ export default connect(mapState, mapDispatch)(Navbar)
  * PROP TYPES
  */
 Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  handleClick: PropTypes.func.isRequired
+  // isLoggedIn: PropTypes.bool.isRequired
 }
