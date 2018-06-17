@@ -23,3 +23,7 @@ form div {
 .content {
   margin-top: 100px;
 }
+
+.welcome-block {
+  display: inline-block;
+}
