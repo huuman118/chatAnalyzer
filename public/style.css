@@ -1,6 +1,6 @@
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #fff;
+  background-color: #eaeaea;
   color: #333;
 }
 
@@ -35,4 +35,13 @@ form div {
   height: 80vh;
   width: 80vw;
   margin: 10px;
+}
+.flexWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flexWrapper > div {
+  margin: 8px;
 }

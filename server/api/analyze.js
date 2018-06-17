@@ -56,6 +56,16 @@ router.put('/', async (req, res, next) => {
                       plain: true // makes sure that the returned instances are just plain objects
                     }
                   )
+                  //updating DB for all records even if it didn't have a tone
+                  await Message.update(
+                    {
+                      analyzed: true
+                    },
+                    {
+                      where: {id: message.id}
+                    }
+                  )
+
                   return resData.push(affectedRows)
                 }
               } catch (err) {

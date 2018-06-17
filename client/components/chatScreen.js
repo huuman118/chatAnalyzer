@@ -12,7 +12,7 @@ const styles = {
   },
   media: {
     height: 0,
-    paddingTop: '75%' // 16:9
+    paddingTop: '56.25%' // 16:9
   }
 }
 
@@ -28,7 +28,7 @@ function ChatScreen(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            FullStack Slack Channel #huuchatappchannel
+            Go to #huuchatappchannel
           </Typography>
           <Typography component="p">
             Type a message with more than 3 words and we'll analyze it!
