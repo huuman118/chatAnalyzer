@@ -19,7 +19,7 @@ const BarChart = props => {
           bottom: 50,
           left: 60
         }}
-        padding={0.3}
+        padding={0.5}
         colors="nivo"
         colorBy="id"
         defs={[
