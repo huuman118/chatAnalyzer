@@ -1,9 +1,7 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import {Link} from 'react-router-dom'
+import ChatScreen from './chatScreen'
 
 /**
  * COMPONENT
@@ -16,31 +14,35 @@ export const UserHome = props => {
       </Typography>
       <p>This app automatically: </p>
       <ol>
-        <li>scrapes the FullStack Slack Channel #huuchatappchannel</li>
+        <li>
+          scrapes messages from the FullStack Slack Channel #huuchatappchannel
+        </li>
         <li>sends the data to Watson for tone analysis</li>
         <li>displays the results via this app</li>
       </ol>
       <Typography variant="subheading">
-        The app uses the following techonologies:
-      </Typography>
-      <List component="nav">
-        <ListItem button component="a" href="https://api.slack.com/">
-          <ListItemText primary="Slack API" />
-        </ListItem>
-        <ListItem
-          button
-          component="a"
-          href="https://www.ibm.com/watson/services/tone-analyzer/"
-        >
-          <ListItemText primary="IBM Watson's Tone Analyzer API" />
-        </ListItem>
-        <ListItem button component="a" href="https://material-ui.com/">
-          <ListItemText primary="Material-UI" />
-        </ListItem>
-      </List>
-      <Typography variant="subheading">
         <Link to="/analysis">Click here to View Analysis!</Link>
       </Typography>
+      <Typography variant="subheading">
+        The app uses the following techonologies:
+      </Typography>
+      <ul>
+        <li>
+          <a href="https://api.slack.com/">Slack API</a>
+        </li>
+        <li>
+          <a href="https://www.ibm.com/watson/services/tone-analyzer/">
+            IBM Watson's Tone Analyzer API
+          </a>
+        </li>
+        <li>
+          <a href="https://material-ui.com/">Material-UI</a>
+        </li>
+        <li>
+          <a href="http://nivo.rocks/">d3 via Nivo Package</a>
+        </li>
+      </ul>
+      <ChatScreen />
     </div>
   )
 }
