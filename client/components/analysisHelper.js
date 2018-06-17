@@ -1,4 +1,4 @@
-const dataFormat = (name, arr) => {
+export const dataFormat = (name, arr) => {
   return {
     user: name,
     LT3words: arr.filter(message => {
@@ -67,4 +67,34 @@ const dataFormat = (name, arr) => {
   }
 }
 
-export default dataFormat
+export function compare(a, b) {
+  // Use toUpperCase() to ignore character casing
+  const totalA =
+    a.LT3words +
+    a.noTone +
+    a.excited +
+    a.frustrated +
+    a.impolite +
+    a.polite +
+    a.sad +
+    a.satisfied +
+    a.sympathetic
+  const totalB =
+    b.LT3words +
+    b.noTone +
+    b.excited +
+    b.frustrated +
+    b.impolite +
+    b.polite +
+    b.sad +
+    b.satisfied +
+    b.sympathetic
+
+  let comparison = 0
+  if (totalA > totalB) {
+    comparison = -1
+  } else if (totalA < totalB) {
+    comparison = 1
+  }
+  return comparison
+}

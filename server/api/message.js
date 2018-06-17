@@ -22,7 +22,7 @@ router.put('/', async (req, res, next) => {
       console.log('data came back')
       //filtering for only user message (i.e. exclude people joining/bot reponse)
       const messages = slackData.messages.filter(message => !message.subtype)
-      console.log(messages)
+      // console.log(messages)
       const updated = await Promise.all(
         messages.map(async message => {
           const messageFormat = {

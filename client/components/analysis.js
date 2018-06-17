@@ -4,7 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
 import PositionedSnackbar from './snackBar'
 import BarChart from './barChart'
-import dataFormat from './analysisHelper'
+import {dataFormat, compare} from './analysisHelper'
 
 class Analysis extends React.Component {
   constructor() {
@@ -24,7 +24,7 @@ class Analysis extends React.Component {
             <Switch
               checked={this.state.allUser}
               onChange={this.handleChange('allUser')}
-              value={this.state.allUser}
+              value="allUser"
               color="primary"
             />
           }
@@ -64,21 +64,22 @@ const mapState = state => {
       users[state.message.allMessage[i].user] = 1
     }
   }
-  for (let keys in users) {
-    userData.push(
-      dataFormat(
-        keys,
-        state.message.allMessage.filter(message => message.user === keys)
+  for (let key in users) {
+    if (Object.prototype.hasOwnProperty.call(users, key)) {
+      userData.push(
+        dataFormat(
+          key,
+          state.message.allMessage.filter(message => message.user === key)
+        )
       )
-    )
+    }
   }
-
   return {
     scraped: state.message.scrapData,
     analyzed: state.message.analyzeData,
     keys,
     allData,
-    userData
+    userData: userData.sort(compare)
   }
 }
 
