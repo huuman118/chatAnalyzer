@@ -7,8 +7,6 @@ import {ResponsiveBar} from '@nivo/bar'
 
 const BarChart = props => {
   const {data, keys} = props
-  console.log('props data', data)
-  console.log('props keys', keys)
   return (
     <div className="chart-display">
       <ResponsiveBar
@@ -16,7 +14,7 @@ const BarChart = props => {
         keys={keys}
         indexBy="user"
         margin={{
-          top: 0,
+          top: 10,
           right: 130,
           bottom: 50,
           left: 60
