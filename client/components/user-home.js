@@ -1,6 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -11,13 +9,17 @@ import {Link} from 'react-router-dom'
  * COMPONENT
  */
 export const UserHome = props => {
-  const {email} = props
-
   return (
     <div className="welcome-block">
-      <Typography variant="title" color="inherit">
+      <Typography variant="title" color="primary">
         Welcome to Huu's Slack Channel Analyzer
       </Typography>
+      <p>This app automatically: </p>
+      <ol>
+        <li>scrapes the FullStack Slack Channel #huuchatappchannel</li>
+        <li>sends the data to Watson for tone analysis</li>
+        <li>displays the results via this app</li>
+      </ol>
       <Typography variant="subheading">
         The app uses the following techonologies:
       </Typography>
@@ -46,17 +48,5 @@ export const UserHome = props => {
 /**
  * CONTAINER
  */
-const mapState = state => {
-  return {
-    email: state.user.email
-  }
-}
 
-export default connect(mapState)(UserHome)
-
-/**
- * PROP TYPES
- */
-UserHome.propTypes = {
-  email: PropTypes.string
-}
+export default UserHome

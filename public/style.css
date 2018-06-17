@@ -27,3 +27,9 @@ form div {
 .welcome-block {
   display: inline-block;
 }
+
+.chart-display {
+  display: inline-block;
+  height: 80vh;
+  width: 80vw;
+}

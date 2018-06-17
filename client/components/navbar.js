@@ -8,7 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick}) => (
   <AppBar>
     <Toolbar>
       <Typography variant="title" color="textSecondary">
@@ -59,5 +59,4 @@ export default connect(mapState, mapDispatch)(Navbar)
  */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired
-  // isLoggedIn: PropTypes.bool.isRequired
 }
