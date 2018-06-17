@@ -22,7 +22,10 @@ const Navbar = ({handleClick, isLoggedIn}) => (
               <Link to="/home">Home</Link>
             </Button>
             <Button href="#" onClick={handleClick}>
-              Update Data
+              <Link to="/analysis">Update Data</Link>
+            </Button>
+            <Button>
+              <Link to="/analysis">Analysis</Link>
             </Button>
           </div>
         }

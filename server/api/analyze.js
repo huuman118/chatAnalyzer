@@ -29,6 +29,7 @@ router.put('/', async (req, res, next) => {
         newData: []
       })
     } else {
+      console.log('running IBM query')
       await toneAnalyzer.toneChat(toneChatParams, async (error, analysis) => {
         if (error) {
           console.log(error)
