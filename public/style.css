@@ -32,4 +32,5 @@ form div {
   display: inline-block;
   height: 80vh;
   width: 80vw;
+  margin: 10px;
 }
