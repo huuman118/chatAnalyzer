@@ -28,7 +28,7 @@ function ChatScreen(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            Go to #huuchatappchannel
+            Join #huuchatappchannel
           </Typography>
           <Typography component="p">
             Type a message with more than 3 words and we'll analyze it!

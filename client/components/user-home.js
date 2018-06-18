@@ -13,7 +13,7 @@ export const UserHome = props => {
         <Typography variant="title" color="primary">
           Welcome to Huu's Slack Channel Analyzer
         </Typography>
-        <p>This app automatically: </p>
+        <p>This app: </p>
         <ol>
           <li>
             scrapes messages from the FullStack Slack Channel #huuchatappchannel
